@@ -33,7 +33,7 @@ dependencies {
     //implementation project(':jitsi')
 
     implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'com.google.android.material:material:1.1.0'
+    implementation 'com.google.android.material:material:1.3.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
@@ -42,4 +42,7 @@ dependencies {
 
     // Jitsi Meet
     implementation ('org.jitsi.react:jitsi-meet-sdk:3.5.0') { transitive = true }
+
+    // Rounded Image View
+    implementation 'com.makeramen:roundedimageview:2.3.0'
 }

@@ -8,11 +8,19 @@ import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.Toast;
+
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.FragmentActivity;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import com.facebook.react.modules.core.PermissionListener;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.util.HashMap;
 
 import org.jitsi.meet.sdk.BroadcastEvent;
@@ -68,6 +76,21 @@ public class JitsiMeetActivity extends FragmentActivity implements JitsiMeetActi
         if (!this.extraInitialize()) {
             this.initialize();
         }
+        FloatingActionButton takeNotes = findViewById(R.id.fab);
+        takeNotes.setOnClickListener(v -> {
+            BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(
+                    JitsiMeetActivity.this, R.style.BottomSheetDialogTheme
+            );
+            View bottomSheetView = LayoutInflater.from(this).inflate(
+                 R.layout.layout_bottom_sheet,
+                    findViewById(R.id.bottomSheetContainer)
+            );
+            bottomSheetView.findViewById(R.id.close_bottom_sheet).setOnClickListener(v1 -> {
+                bottomSheetDialog.dismiss();
+            });
+            bottomSheetDialog.setContentView(bottomSheetView);
+            bottomSheetDialog.show();
+        });
 
     }
 
